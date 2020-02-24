@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LoginInfo</string>
+    
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pref_file">preferences_file</string>
+    <string name="pref_login_status">preferences_login_status</string>
+    <string name="pref_user_name">preferences_user_name</string>
+</resources>
