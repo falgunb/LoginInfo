@@ -39,18 +39,18 @@ public class WelcomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_welcome, container, false);
 
-        loggedInUser = view.findViewById(R.id.name);
-        String Name = "Hi, " + MainActivity.prefConfig.readName();
-        loggedInUser.setText(Name);
-//        loggedInUser.setText("Welcome " + MainActivity.prefConfig.readName());
-        btnLogout = view.findViewById(R.id.logout);
-
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onLogoutInterface.performLogout();
-            }
-        });
+//        loggedInUser = view.findViewById(R.id.name);
+//        String Name = "Hi, " + MainActivity.prefConfig.readName();
+//        loggedInUser.setText(Name);
+////        loggedInUser.setText("Welcome " + MainActivity.prefConfig.readName());
+//        btnLogout = view.findViewById(R.id.logout);
+//
+//        btnLogout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                onLogoutInterface.performLogout();
+//            }
+//        });
 
         return view;
     }
@@ -59,7 +59,7 @@ public class WelcomeFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         Activity activity = (Activity) context;
-        onLogoutInterface = (OnLogoutInterface) activity;
+//        onLogoutInterface = (OnLogoutInterface) activity;
 
     }
 }
