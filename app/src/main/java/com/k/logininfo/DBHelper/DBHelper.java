@@ -1,4 +1,4 @@
-package com.k.logininfo;
+package com.k.logininfo.DBHelper;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
+import com.k.logininfo.Model.User;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "test.db";

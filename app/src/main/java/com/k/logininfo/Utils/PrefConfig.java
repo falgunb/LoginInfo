@@ -1,8 +1,10 @@
-package com.k.logininfo;
+package com.k.logininfo.Utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
+
+import com.k.logininfo.R;
 
 public class PrefConfig {
     private SharedPreferences sharedPreferences;

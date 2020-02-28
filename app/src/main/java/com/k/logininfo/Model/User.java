@@ -1,4 +1,4 @@
-package com.k.logininfo;
+package com.k.logininfo.Model;
 
 import com.google.gson.annotations.SerializedName;
 

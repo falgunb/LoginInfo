@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.k.logininfo.Fragments.LoginFragment;
+import com.k.logininfo.Fragments.RegistrationFragment;
+import com.k.logininfo.Fragments.WelcomeFragment;
+
 public class MainActivity extends AppCompatActivity implements LoginFragment.OnLogInFormActivationListener {
 
 

@@ -1,4 +1,6 @@
-package com.k.logininfo;
+package com.k.logininfo.Service;
+
+import com.k.logininfo.Model.User;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
