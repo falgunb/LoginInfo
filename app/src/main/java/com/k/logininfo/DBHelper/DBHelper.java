@@ -67,6 +67,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 return user1;
             }
         }
+        db.close();
         return null;
     }
     public boolean isUserNameExists(String userName){
@@ -78,6 +79,8 @@ public class DBHelper extends SQLiteOpenHelper {
         if (cursor != null && cursor.moveToFirst() && cursor.getCount()>0){
             return true;
         }
+        db.close();
         return false;
     }
+
 }

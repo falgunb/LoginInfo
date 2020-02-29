@@ -7,30 +7,41 @@ import android.os.Bundle;
 import com.k.logininfo.Fragments.LoginFragment;
 import com.k.logininfo.Fragments.RegistrationFragment;
 import com.k.logininfo.Fragments.WelcomeFragment;
+import com.k.logininfo.Model.User;
+import com.k.logininfo.Utils.PrefConfig;
 
 public class MainActivity extends AppCompatActivity implements LoginFragment.OnLogInFormActivationListener {
 
 
-//    public static PrefConfig prefConfig;
+    public static PrefConfig prefConfig;
+    User user;
 //    public static ApiInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        prefConfig = new PrefConfig(this);
+        prefConfig = new PrefConfig(this);
 //        apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
         if (findViewById(R.id.fragmentContainer) != null) {
-            if (savedInstanceState != null) {
-                return;
+                String readname = prefConfig.readName();
+            if (readname == null){
+
+                getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainer,new LoginFragment()).commit();
+            } else {
+                getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainer, new WelcomeFragment()).commit();
             }
+
+//            if (savedInstanceState != null) {
+//                return;
+//            }
 //            if (prefConfig.readLogInStatus()) {
 //                getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainer, new WelcomeFragment()).commit();
 //            }
-            else {
-                getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainer, new LoginFragment()).commit();
-            }
+//            else {
+//                getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainer, new LoginFragment()).commit();
+//            }
         }
     }
 

@@ -32,7 +32,13 @@ public class PrefConfig {
     }
 
     public String readName() {
-        return sharedPreferences.getString(context.getString(R.string.pref_user_name), "User");
+        return sharedPreferences.getString(context.getString(R.string.pref_user_name), null);
+    }
+    public void removeUser(){
+        sharedPreferences = context.getSharedPreferences(context.getString(R.string.pref_file), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
     }
 
     public void displayToast(String message){

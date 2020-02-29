@@ -22,7 +22,7 @@ public class RegistrationFragment extends Fragment {
 
     private EditText input_name, input_username, input_user_password;
     private Button btnRegister;
-    DBHelper sqliteHelper;
+    private DBHelper sqliteHelper;
 
     public RegistrationFragment() {
         // Required empty public constructor
@@ -45,7 +45,7 @@ public class RegistrationFragment extends Fragment {
             public void onClick(View view) {
 //                performRegistration();
                 Log.e("reg button", "clicked");
-                if (validate()){
+                if (validate()) {
                     String name = input_name.getText().toString();
                     String user_name = input_username.getText().toString();
                     String user_password = input_user_password.getText().toString();
@@ -70,32 +70,32 @@ public class RegistrationFragment extends Fragment {
         return view;
     }
 
-    public boolean validate() {
+    private boolean validate() {
         boolean valid = false;
         String Name = input_name.getText().toString();
         String Username = input_username.getText().toString();
         String Password = input_user_password.getText().toString();
         if (Name.isEmpty()) {
             valid = false;
-            Toast.makeText(getActivity(),"Name can't empty",Toast.LENGTH_SHORT);
+            Toast.makeText(getActivity(), "Name can't empty", Toast.LENGTH_SHORT).show();
         } else {
             valid = true;
         }
         if (Username.isEmpty()) {
             valid = false;
-            Toast.makeText(getActivity(),"UserName can't empty",Toast.LENGTH_SHORT);
+            Toast.makeText(getActivity(), "UserName can't empty", Toast.LENGTH_SHORT).show();
         } else {
             valid = true;
         }
         if (Password.isEmpty()) {
             valid = false;
-            Toast.makeText(getActivity(),"Password can't empty",Toast.LENGTH_SHORT);
+            Toast.makeText(getActivity(), "Password can't empty", Toast.LENGTH_SHORT).show();
         } else {
             if (Password.length() > 4) {
                 valid = true;
             } else {
                 valid = false;
-                Toast.makeText(getActivity(),"Password is not sufficiently long..",Toast.LENGTH_SHORT);
+                Toast.makeText(getActivity(), "Password is not sufficiently long..", Toast.LENGTH_SHORT).show();
             }
         }
         return valid;
@@ -141,6 +141,6 @@ public class RegistrationFragment extends Fragment {
 //            });
 //        }
 
-    }
+}
 
 

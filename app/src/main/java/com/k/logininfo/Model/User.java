@@ -1,14 +1,33 @@
 package com.k.logininfo.Model;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.google.gson.annotations.SerializedName;
 
 public class User {
 
-
+    Context context;
+    SharedPreferences sharedPreferences;
     public String id;
     public String name;
     public String userName;
     public String password;
+
+    public void removeUser() {
+        sharedPreferences.edit().clear().commit();
+    }
+
+
+    public String getUserName() {
+        userName = sharedPreferences.getString("userdata", "");
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+        sharedPreferences.edit().putString("userdata", userName).commit();
+    }
 
     public User(String id, String userName, String name, String password) {
         this.id = id;

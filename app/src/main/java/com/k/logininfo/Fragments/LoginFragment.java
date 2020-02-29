@@ -3,6 +3,7 @@ package com.k.logininfo.Fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,8 +19,10 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.k.logininfo.DBHelper.DBHelper;
+import com.k.logininfo.MainActivity;
 import com.k.logininfo.R;
 import com.k.logininfo.Model.User;
+import com.k.logininfo.Utils.PrefConfig;
 
 public class LoginFragment extends Fragment {
 
@@ -29,6 +32,8 @@ public class LoginFragment extends Fragment {
     private EditText input_username, input_user_password;
     private Button loginBtn;
     DBHelper sqliteHelper;
+    PrefConfig prefConfig;
+    User user;
 
     public interface OnLogInFormActivationListener {
         public void performRegister();
@@ -48,10 +53,12 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         registerTextView = view.findViewById(R.id.register_user);
         sqliteHelper = new DBHelper(getActivity());
+        prefConfig = new PrefConfig(getActivity());
         input_username = view.findViewById(R.id.input_username);
         input_user_password = view.findViewById(R.id.input_user_password);
-        loginBtn = view.findViewById(R.id.login_btn);
 
+
+        loginBtn = view.findViewById(R.id.login_btn);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,8 +68,8 @@ public class LoginFragment extends Fragment {
                     String user_name = input_username.getText().toString();
                     String user_password = input_user_password.getText().toString();
                     User curruntUser = sqliteHelper.Authenticate(new User(null, user_name, null, user_password));
-
                     if (curruntUser != null) {
+                        MainActivity.prefConfig.writeName(user_name);
                         Snackbar.make(loginBtn, "Login Success!", Snackbar.LENGTH_LONG).show();
                         WelcomeFragment nextFrag = new WelcomeFragment();
                         getActivity().getSupportFragmentManager().beginTransaction()
@@ -141,6 +148,13 @@ public class LoginFragment extends Fragment {
 //            });
 //        }
 //    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        prefConfig.readLogInStatus();
+    }
 
     @Override
     public void onAttach(Context context) {
